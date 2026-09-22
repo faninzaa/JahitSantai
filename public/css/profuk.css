@@ -1,0 +1,201 @@
+/* profilukuran.css - halaman Ukuran saya */
+.uk-grid {
+    display: grid;
+    grid-template-columns: 400px minmax(0, 635px);
+    gap: 41px;
+    margin-top: 38px;
+    align-items: start;
+}
+
+.uk-panel {
+    padding: 24px;
+}
+
+.uk-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.uk-title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+
+.pill-tag {
+    background: var(--chip);
+    border-radius: 6px;
+    padding: 6px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+
+.pill-tag.sm {
+    font-size: 11px;
+    padding: 5px 9px;
+}
+
+.uk-prof {
+    display: block;
+    border: 1px solid #B5B8C2;
+    border-radius: 6px;
+    padding: 23px 32px;
+    margin-top: 22px;
+    color: #3D4760;
+}
+
+.uk-prof.active {
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+}
+
+.uk-prof b {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .4px;
+    color: var(--navy);
+}
+
+.uk-prof span {
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+    letter-spacing: .5px;
+}
+
+.uk-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 38px;
+    margin-top: 26px;
+    border: 1px solid #B5B8C2;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: .4px;
+}
+
+.uk-add svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.uk-tips {
+    margin-top: 46px;
+    padding-bottom: 26px;
+}
+
+.uk-tips p {
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: .4px;
+    color: #3D4760;
+}
+
+.uk-tips b {
+    display: block;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.uk-tips a {
+    font-size: 13px;
+    text-decoration: underline;
+    letter-spacing: .4px;
+}
+
+.uk-line {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 18px 0 26px;
+}
+
+.uk-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 26px;
+}
+
+.uk-field label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 500;
+    letter-spacing: .5px;
+}
+
+.uk-input {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #B5B8C2;
+    border-radius: 4px;
+}
+
+.uk-input input,
+.uk-input select {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: var(--text);
+    outline: 0;
+}
+
+.uk-input:focus-within {
+    border-color: var(--navy);
+}
+
+.uk-input i {
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: .4px;
+}
+
+.uk-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 36px;
+}
+
+.uk-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 43px;
+    padding: 0 20px;
+    border: 1px solid var(--navy);
+    border-radius: 2px;
+    font-size: 15px;
+    letter-spacing: .6px;
+}
+
+.uk-btn-fill {
+    background: var(--navy);
+    color: #fff;
+}
+
+.uk-btn:hover {
+    opacity: .9;
+}
+
+@media (max-width: 900px) {
+    .uk-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .uk-fields {
+        grid-template-columns: 1fr;
+    }
+}

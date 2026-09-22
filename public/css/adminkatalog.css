@@ -1,0 +1,37 @@
+/* adminkatalog.css: khusus halaman Katalog */
+.k td {
+    height: 122px
+}
+
+.badge.s {
+    padding: 3px 11px
+}
+
+.ico {
+    display: inline-flex;
+    gap: 12px;
+    vertical-align: middle
+}
+
+.ico svg {
+    width: 24px;
+    height: 24px;
+    cursor: pointer
+}
+
+.thumb {
+    width: 153px;
+    height: 72px;
+    border-radius: 8px;
+    background:
+        radial-gradient(ellipse at 32% 45%, #e9c9a0 0 9%, transparent 10%),
+        linear-gradient(115deg, #4a3323 0, #a86f45 28%, #d9a877 42%, #b56868 62%, #c98484 100%);
+    display: block
+}
+
+.desc {
+    font-size: 15px;
+    line-height: 1.05;
+    max-width: 270px;
+    letter-spacing: .03em
+}

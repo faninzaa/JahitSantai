@@ -2,7 +2,7 @@
 
 return [
     // Hero
-    'hero_title' => 'Solusi Busana Custom yang Pas dan Nyaman',
+    'hero_title' => 'Solusi Busana Kustom yang Pas dan Nyaman',
     'hero_desc' => 'Nikmati kemudahan memesan jahitan berkualitas tinggi langsung dari rumah dengan pengerjaan presisi.',
     'hero_btn_order' => 'Mulai Pesan Sekarang',
     'hero_btn_explore' => 'Eksplorasi Layanan',
@@ -12,8 +12,7 @@ return [
     'services_subtitle' => 'Solusi lengkap untuk segala kebutuhan pakaian Anda',
     'service_permak' => 'Permak',
     'service_jahit_baru' => 'Jahit Baru',
-    'service_custom_desain' => 'Custom Desain',
-    'service_ukur_rumah' => 'Ukur di Rumah',
+    'service_custom_desain' => 'Kustom Desain',
     'service_desc' => 'Solusi lengkap untuk segala kebutuhan pakaian Anda',
 
     // Testimoni
@@ -32,8 +31,7 @@ return [
     'footer_services_title' => 'Layanan Kami',
     'footer_service_permak' => 'Permak Pakaian',
     'footer_service_jahit' => 'Jahit Baru',
-    'footer_service_custom' => 'Custom Desain',
-    'footer_service_ukur' => 'Ukur di Rumah',
+    'footer_service_custom' => 'Kustom Desain',
     'footer_help_title' => 'Bantuan',
     'footer_help_faq' => 'FAQ',
     'footer_help_ukur' => 'Cara Mengukur',

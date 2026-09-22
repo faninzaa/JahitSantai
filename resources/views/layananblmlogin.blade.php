@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JahitSantai</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        brand: ['Montserrat', 'sans-serif']
                     },
                     colors: {
                         navy: {
@@ -26,6 +26,10 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -39,64 +43,59 @@
 </head>
 
 <body class="text-slate-800">
+
     {{-- ===================== NAVBAR ===================== --}}
     <header class="bg-white sticky top-0 z-50 border-b border-slate-100">
         <nav class="max-w-screen-2xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-            <a href="{{ url('/beranda') }}" class="flex items-center gap-2 text-2xl font-bold text-slate-900">
+            <a href="{{ url('/') }}" class="flex items-center gap-2 text-2xl font-bold text-slate-900">
                 <img src="{{ asset('images/logoweb.svg') }}" alt="JahitSantai" class="h-13 w-13">
             </a>
 
-            <ul class="hidden md:flex items-center gap-10 text-slate-700 font-medium justify-self-center">
-                <li><a href="{{ url('/beranda') }}" class="hover:text-slate-900">{{ __('nav.home') }}</a></li>
-                <li><a href="{{ url('/layanan') }}"
+            <ul class="hidden md:flex items-center gap-10 text-slate-700 font-medium">
+                <li><a href="{{ url('/berandablmlogin') }}" class="hover:text-slate-900">{{ __('nav.home') }}</a></li>
+                <li><a href="{{ url('/layananblmlogin') }}"
                         class="text-slate-900 border-b-2 border-slate-900 pb-1">{{ __('nav.services') }}</a></li>
-                <li><a href="{{ url('/tentangkami') }}" class="hover:text-slate-900">{{ __('nav.about') }}</a></li>
+                <li><a href="{{ url('/tentangblmlogin') }}" class="hover:text-slate-900">{{ __('nav.about') }}</a></li>
             </ul>
 
-            <div class="flex items-center gap-3">
-                <div class="flex items-center text-sm font-medium text-slate-500">
-                    <a href="{{ route('lang.switch', 'id') }}"
-                        class="{{ app()->getLocale() === 'id' ? 'text-slate-900 font-semibold' : '' }}">ID</a>
-                    <span class="mx-1 text-slate-300">/</span>
-                    <a href="{{ route('lang.switch', 'en') }}"
-                        class="{{ app()->getLocale() === 'en' ? 'text-slate-900 font-semibold' : '' }}">EN</a>
-                </div>
+            <div class="flex items-center gap-2">
 
-                {{-- Trigger + Dropdown akun --}}
-                @auth
-                <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" type="button"
-                        class="flex items-center justify-center h-10 w-10 rounded-full bg-navy text-white font-semibold text-sm">
-                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                {{-- ============ DROPDOWN BAHASA (ID / EN) ============ --}}
+                <div x-data="{ open: false }" @keydown.escape.window="open = false" class="relative">
+                    <button @click="open = !open" type="button" aria-label="Pilih bahasa" :aria-expanded="open"
+                        class="flex items-center justify-center h-10 w-10 rounded-full text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <path
+                                d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" />
+                        </svg>
                     </button>
 
                     <div x-show="open" @click.away="open = false" x-cloak
                         x-transition:enter="transition ease-out duration-150"
                         x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                        class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50">
-                        <div class="px-4 py-2 border-b border-slate-100">
-                            <p class="text-sm font-semibold text-slate-900">{{ auth()->user()->name }}</p>
-                            <p class="text-xs text-slate-500">{{ auth()->user()->email }}</p>
-                        </div>
-                        <a href="{{ url('/profil') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
-                            Profil Saya
-                        </a>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit"
-                                class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-slate-50">
-                                Keluar
-                            </button>
-                        </form>
+                        class="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
+                        @foreach (['id' => 'Indonesia', 'en' => 'English'] as $kode => $nama)
+                            <a href="{{ route('lang.switch', $kode) }}"
+                                class="flex items-center justify-between px-4 py-2 text-sm hover:bg-slate-50 {{ app()->getLocale() === $kode ? 'text-slate-900 font-semibold' : 'text-slate-600' }}">
+                                <span>{{ $nama }}</span>
+                                @if (app()->getLocale() === $kode)
+                                    <svg class="h-4 w-4 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12l5 5 9-10" />
+                                    </svg>
+                                @endif
+                            </a>
+                        @endforeach
                     </div>
                 </div>
-                @else
-                    {{-- Kalau belum login, tampilkan tombol Masuk --}}
-                    <a href="{{ url('/login') }}" class="px-5 py-2.5 rounded-md text-white font-semibold transition"
-                        style="background-color: #1F2A44;">
-                        {{ __('nav.login') }}
-                    </a>
-                @endauth
+
+                {{-- ============ TOMBOL LOGIN ============ --}}
+                <a href="{{ url('/login') }}" class="ml-1 px-5 py-2.5 rounded-md text-white font-semibold transition"
+                    style="background-color: #1F2A44;">
+                    {{ __('nav.login') }}
+                </a>
             </div>
         </nav>
     </header>
@@ -127,17 +126,17 @@
                 {{-- Filter pills --}}
                 <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
                     @php
-                        $kategori = ['Semua', 'Permak', 'Jahit Baru', 'Kustom Desain'];
+                        $kategori = ['Semua', 'Permak', 'Jahit Baru', 'Kustom Desain', 'Aksesoris'];
                         $aktif = request('kategori', 'Semua');
                     @endphp
 
                     @foreach ($kategori as $item)
-                                <a href="{{ url('/layanan') }}?kategori={{ urlencode($item) }}" class="px-5 py-2 rounded-full text-sm font-medium border transition
-                                            {{ $aktif === $item
+                                    <a href="{{ url('/layanan') }}?kategori={{ urlencode($item) }}" class="px-5 py-2 rounded-full text-sm font-medium border transition
+                                                                                {{ $aktif === $item
                         ? 'bg-navy text-white border-navy'
                         : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50' }}">
-                                    {{ $item }}
-                                </a>
+                                        {{ $item }}
+                                    </a>
                     @endforeach
                 </div>
             </div>
@@ -224,7 +223,7 @@
             <div class="mt-12 flex items-center justify-center gap-2">
                 @for ($i = 1; $i <= 5; $i++)
                             <a href="{{ url('/layanan') }}?page={{ $i }}" class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium transition
-                                        {{ request('page', 1) == $i
+                                                                {{ request('page', 1) == $i
                     ? 'bg-navy text-white'
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50' }}">
                                 {{ $i }}

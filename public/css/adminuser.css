@@ -1,0 +1,107 @@
+/* admin-user.css: khusus halaman User */
+.u td {
+    height: 59px
+}
+
+.u td:last-child {
+    text-align: center
+}
+
+.u td:last-child svg {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    stroke: var(--navy)
+}
+
+.bell-wrap {
+    position: relative;
+    margin-right: 36px;
+    cursor: pointer
+}
+
+.bell-wrap .menu {
+    top: 40px;
+    width: 280px
+}
+
+.me {
+    position: relative;
+    cursor: pointer
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    padding: 8px;
+    z-index: 20
+}
+
+.menu.on {
+    display: block
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.menu a svg {
+    width: 18px;
+    height: 18px
+}
+
+.menu a:hover {
+    background: var(--bg)
+}
+
+.menu a.red {
+    color: var(--red)
+}
+
+.del-btn {
+    background: none;
+    border: 0;
+    padding: 6px;
+    cursor: pointer;
+    display: inline-flex
+}
+
+.del-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--red)
+}
+
+.filters select.pill {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    color: var(--navy);
+    font: inherit;
+    letter-spacing: inherit;
+    padding: 0 44px 0 25px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E2A4A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 18px;
+}
+
+.filters select.pill:focus {
+    outline: none
+}

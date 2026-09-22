@@ -8,19 +8,32 @@ use Illuminate\Validation\Rule;
 
 class ProfilController extends Controller
 {
-    public function show()
+    // Tab: Informasi akun
+    public function show(Request $request)
     {
-        return view('profil', [
-            'user' => auth()->user(),
+        return view('profil.profiluser', [
+            'user' => $request->user(),
         ]);
+    }
+
+    // Tab: Riwayat pemesanan
+    public function riwayatPemesanan(Request $request)
+    {
+        return view('profil.profilpemesanan');
+    }
+
+    // Tab: Riwayat ulasan
+    public function riwayatUlasan(Request $request)
+    {
+        return view('profil.profilulasan');
     }
 
     public function update(Request $request)
     {
-        $user = auth()->user();
+        $user = $request->user();
 
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name'  => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'email',
@@ -40,14 +53,14 @@ class ProfilController extends Controller
             'foto' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'], // maks 2MB
         ]);
 
-        $user = auth()->user();
+        $user = $request->user();
 
         // Hapus foto lama kalau ada
         if ($user->foto) {
             Storage::disk('public')->delete($user->foto);
         }
 
-        // Simpan foto baru
+        // Simpan foto baru: hasilnya "pfp/namafile.jpg" di storage/app/public
         $path = $request->file('foto')->store('pfp', 'public');
 
         $user->update(['foto' => $path]);

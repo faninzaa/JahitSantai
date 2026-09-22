@@ -1,0 +1,211 @@
+/* profiluser.css - halaman Informasi akun */
+.info-wrap {
+  margin-top: 38px;
+  max-width: 1003px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-wrap form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.info-user-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-upload {
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+}
+
+.avatar-upload img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .15s;
+  pointer-events: none;
+}
+
+.avatar-upload:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.avatar-overlay svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+.info-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+.info-email {
+  margin-top: 2px;
+  color: var(--muted);
+  letter-spacing: .3px;
+}
+
+.info-since {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #8A92A6;
+}
+
+.form-card {
+  padding: 24px;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 26px;
+  margin-top: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: .4px;
+}
+
+.field input {
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  border: 1px solid #B5B8C2;
+  border-radius: 4px;
+  background: transparent;
+  font: inherit;
+  color: var(--text);
+}
+
+.field input:focus {
+  outline: 2px solid rgba(31, 42, 68, .25);
+  border-color: var(--navy);
+}
+
+.addr-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.addr-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addr-title svg,
+.addr-add svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.addr-add {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.addr-add svg {
+  width: 16px;
+  height: 16px;
+}
+
+.addr-add:hover {
+  color: var(--navy);
+}
+
+.addr-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.addr-item+.addr-item {
+  margin-top: 12px;
+}
+
+.addr-label {
+  font-weight: 600;
+}
+
+.addr-text {
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 21px;
+}
+
+.save-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-lg {
+  height: 46px;
+  padding: 0 24px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.btn-fill:hover {
+  background: #141B2E;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-user {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

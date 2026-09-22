@@ -9,16 +9,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-    // Menampilkan halaman form register
     public function showRegister()
     {
         return view('auth.register');
     }
 
-    // Memproses data register
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -36,6 +35,34 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+    }
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+        $googleUser = Socialite::driver('google')->user();
+
+        $user = User::where('google_id', $googleUser->getId())
+            ->orWhere('email', $googleUser->getEmail())
+            ->first();
+
+        if ($user) {
+            $user->update(['google_id' => $googleUser->getId()]);
+        } else {
+            $user = User::create([
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'google_id' => $googleUser->getId(),
+                'password' => bcrypt(Str::random(24)),
+            ]);
+        }
+
+        Auth::login($user);
+
+        return redirect('/dashboarduser'); // sesuaikan tujuan setelah login
     }
 
     // Menampilkan halaman form login
@@ -124,6 +151,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/berandablmlogin');
     }
 }

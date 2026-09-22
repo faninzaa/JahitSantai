@@ -1,0 +1,131 @@
+/* pesanan.css - filter chip + kartu pesanan. Dipakai: profilpemesanan & profilulasan */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 33px;
+}
+
+.chip {
+    height: 31px;
+    padding: 0 15px;
+    border: 1px solid var(--navy);
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .3px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.chip.active {
+    background: var(--navy);
+    color: #fff;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    margin-top: 40px;
+    max-width: 1003px;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    min-height: 150px;
+    padding: 0 31px 0 27px;
+}
+
+.order-icon {
+    width: 36px;
+    height: 36px;
+    flex: none;
+}
+
+.order-info {
+    flex: 1;
+}
+
+.order-id {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .4px;
+}
+
+.order-name {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
+
+.order-date {
+    margin-top: 5px;
+    color: #3D4760;
+    letter-spacing: .5px;
+}
+
+.order-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.order-total {
+    display: flex;
+    align-items: flex-start;
+    gap: 46px;
+}
+
+.order-total p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: .5px;
+    text-align: right;
+}
+
+.btn-detail {
+    background: var(--chip);
+    border-radius: 6px;
+    padding: 3px 22px;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 9px;
+}
+
+.btn-disabled {
+    background: #A3A8B5;
+    border-color: #A3A8B5;
+    color: #fff;
+    cursor: default;
+}
+
+.empty {
+    color: var(--muted);
+    padding: 30px 0;
+}
+
+
+@media (max-width: 900px) {
+    .order {
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .order-total {
+        gap: 16px;
+    }
+}

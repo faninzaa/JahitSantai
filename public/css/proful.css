@@ -1,0 +1,44 @@
+/* profilulasan.css - kartu ulasan */
+.review {
+    padding: 22px 22px 18px;
+}
+
+.review-head {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+}
+
+.review-name {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: .4px;
+}
+
+.stars {
+    color: #FFCC33;
+    font-size: 22px;
+    line-height: 20px;
+}
+
+.review-service {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: .3px;
+}
+
+.review-text {
+    margin-top: 14px;
+    max-width: 560px;
+    line-height: 21px;
+    color: #3D4760;
+}
